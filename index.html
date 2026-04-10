@@ -16,24 +16,22 @@
       margin: auto;
       border-radius: 10px;
       box-shadow: 0 0 10px #ccc;
-    }
-
-    input, button {
-      width: 100%;
-      padding: 10px;
-      margin: 8px 0;
-      border-radius: 5px;
-    }
-
-    input {
-      border: 1px solid #ccc;
+      text-align: center;
     }
 
     button {
+      width: 100%;
+      padding: 12px;
       background: black;
       color: white;
       border: none;
       cursor: pointer;
+      font-size: 16px;
+      border-radius: 5px;
+    }
+
+    button:hover {
+      background: #333;
     }
   </style>
 </head>
@@ -41,22 +39,21 @@
 <body>
 
 <div class="box">
-  <h2>Order Jersey</h2>
+  <h2>Order Your Jersey</h2>
 
-  <form name="jersey-order" method="POST" data-netlify="true">
+  <p>Click below to place your order</p>
 
-    <input type="hidden" name="form-name" value="jersey-order">
-
-    <input name="name" placeholder="Full Name" required>
-    <input name="phone" placeholder="Phone Number" required>
-    <input name="address" placeholder="Address" required>
-    <input name="jersey" placeholder="Jersey Name" required>
-    <input name="size" placeholder="Size" required>
-
-    <button type="submit">Place Order</button>
-  </form>
-
+  <button onclick="openForm()">Place Order</button>
 </div>
+
+<script>
+function openForm() {
+  window.open(
+    "https://docs.google.com/forms/d/e/1FAIpQLSdSUaG70SLwt7wqeXc1YjH1cjEbJpF4xZLc8NKKrE8XhxUR3Q/viewform?usp=pp_url&entry.1838543144=&entry.1248912984=&entry.1922890868=&entry.1598068495=&entry.580166632=&entry.653446067=",
+    "_blank"
+  );
+}
+</script>
 
 </body>
 </html>
