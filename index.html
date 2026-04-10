@@ -18,26 +18,22 @@
       box-shadow: 0 0 10px #ccc;
     }
 
-    input {
+    input, button {
       width: 100%;
       padding: 10px;
       margin: 8px 0;
-      border: 1px solid #ccc;
       border-radius: 5px;
     }
 
+    input {
+      border: 1px solid #ccc;
+    }
+
     button {
-      width: 100%;
-      padding: 10px;
       background: black;
       color: white;
       border: none;
       cursor: pointer;
-      border-radius: 5px;
-    }
-
-    button:hover {
-      background: #333;
     }
   </style>
 </head>
@@ -45,42 +41,22 @@
 <body>
 
 <div class="box">
-  <h2>Order Your Jersey</h2>
+  <h2>Order Jersey</h2>
 
-  <input id="name" placeholder="Full Name">
-  <input id="phone" placeholder="Phone Number">
-  <input id="address" placeholder="Address">
-  <input id="jersey" placeholder="Jersey Name/Team">
-  <input id="size" placeholder="Size">
+  <form name="jersey-order" method="POST" data-netlify="true">
 
-  <button onclick="submitOrder()">Place Order</button>
+    <input type="hidden" name="form-name" value="jersey-order">
+
+    <input name="name" placeholder="Full Name" required>
+    <input name="phone" placeholder="Phone Number" required>
+    <input name="address" placeholder="Address" required>
+    <input name="jersey" placeholder="Jersey Name" required>
+    <input name="size" placeholder="Size" required>
+
+    <button type="submit">Place Order</button>
+  </form>
+
 </div>
-
-<script>
-function submitOrder() {
-
-  let name = document.getElementById("name").value;
-  let phone = document.getElementById("phone").value;
-  let address = document.getElementById("address").value;
-  let jersey = document.getElementById("jersey").value;
-  let size = document.getElementById("size").value;
-
-  if(!name || !phone || !address || !jersey || !size){
-    alert("Please fill all fields");
-    return;
-  }
-
-  let url =
-  "https://docs.google.com/forms/d/e/1vtWzTvP5tFi4aFwjTc41TctqmJLMVPuRkZMjsNFOzCQ/formResponse"
-  + "?entry.1248912984=" + encodeURIComponent(name)
-  + "&entry.1922890868=" + encodeURIComponent(phone)
-  + "&entry.1598068495=" + encodeURIComponent(address)
-  + "&entry.580166632=" + encodeURIComponent(jersey)
-  + "&entry.653446067=" + encodeURIComponent(size);
-
-  window.open(url, "_blank");
-}
-</script>
 
 </body>
 </html>
