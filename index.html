@@ -8,6 +8,7 @@
       background: #f4f4f4;
       padding: 20px;
     }
+
     .box {
       background: white;
       padding: 20px;
@@ -16,11 +17,15 @@
       border-radius: 10px;
       box-shadow: 0 0 10px #ccc;
     }
+
     input {
       width: 100%;
       padding: 10px;
       margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
     }
+
     button {
       width: 100%;
       padding: 10px;
@@ -28,6 +33,12 @@
       color: white;
       border: none;
       cursor: pointer;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+
+    button:hover {
+      background: #333;
     }
   </style>
 </head>
@@ -37,18 +48,39 @@
 <div class="box">
   <h2>Order Your Jersey</h2>
 
-  <form action="https://docs.google.com/forms/d/e/1vtWzTvP5tFi4aFwjTc41TctqmJLMVPuRkZMjsNFOzCQ/formResponse" method="POST" target="_blank">
+  <input id="name" placeholder="Full Name" required>
+  <input id="phone" placeholder="Phone Number" required>
+  <input id="address" placeholder="Address" required>
+  <input id="jersey" placeholder="Jersey Name/Team" required>
+  <input id="size" placeholder="Size (S/M/L/XL)" required>
 
-    <input name="entry.1248912984" placeholder="Full Name" required>
-    <input name="entry.1922890868" placeholder="Phone Number" required>
-    <input name="entry.1598068495" placeholder="Address" required>
-    <input name="entry.580166632" placeholder="Jersey Name" required>
-    <input name="entry.653446067" placeholder="Size" required>
-
-    <button type="submit">Place Order</button>
-
-  </form>
+  <button onclick="submitOrder()">Place Order</button>
 </div>
+
+<script>
+function submitOrder() {
+
+  let name = document.getElementById("name").value;
+  let phone = document.getElementById("phone").value;
+  let address = document.getElementById("address").value;
+  let jersey = document.getElementById("jersey").value;
+  let size = document.getElementById("size").value;
+
+  if(!name || !phone || !address || !jersey || !size){
+    alert("Please fill all fields!");
+    return;
+  }
+
+  let url = "https://docs.google.com/forms/d/e/1vtWzTvP5tFi4aFwjTc41TctqmJLMVPuRkZMjsNFOzCQ/formResponse"
+    + "?entry.1248912984=" + encodeURIComponent(name)
+    + "&entry.1922890868=" + encodeURIComponent(phone)
+    + "&entry.1598068495=" + encodeURIComponent(address)
+    + "&entry.580166632=" + encodeURIComponent(jersey)
+    + "&entry.653446067=" + encodeURIComponent(size);
+
+  window.open(url, "_blank");
+}
+</script>
 
 </body>
 </html>
